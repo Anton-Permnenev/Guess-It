@@ -7,25 +7,25 @@
 
 	canvas.width = Math.min(document.documentElement.clientWidth, window.innerWidth || 300);
 	canvas.height = Math.min(document.documentElement.clientHeight, window.innerHeight || 300);
-	 
+
 	ctx.strokeStyle = color;
 	ctx.lineWidth = '3';
 	ctx.lineCap = ctx.lineJoin = 'round';
 
 	/* Mouse and touch events */
-	
+
 	document.getElementById('colorSwatch').addEventListener('click', function() {
 		color = document.querySelector(':checked').getAttribute('data-color');
 	}, false);
-	
+
 	var isTouchSupported = 'ontouchstart' in window;
 	var isPointerSupported = navigator.pointerEnabled;
 	var isMSPointerSupported =  navigator.msPointerEnabled;
-	
+
 	var downEvent = isTouchSupported ? 'touchstart' : (isPointerSupported ? 'pointerdown' : (isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
 	var moveEvent = isTouchSupported ? 'touchmove' : (isPointerSupported ? 'pointermove' : (isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
 	var upEvent = isTouchSupported ? 'touchend' : (isPointerSupported ? 'pointerup' : (isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
-	 	  
+
 	canvas.addEventListener(downEvent, startDraw, false);
 	canvas.addEventListener(moveEvent, draw, false);
 	canvas.addEventListener(upEvent, endDraw, false);
@@ -78,7 +78,7 @@
 		if(!message || message.plots.length < 1) return;
 		drawOnCanvas(message.color, message.plots);
     }
-    
+
     // Get Older and Past Drawings!
     if(drawHistory) {
 	    pubnub.history({
@@ -103,16 +103,16 @@
 
     	drawOnCanvas(color, plots);
 	}
-	
+
 	function startDraw(e) {
 	  	e.preventDefault();
 	  	isActive = true;
 	}
-	
+
 	function endDraw(e) {
 	  	e.preventDefault();
 	  	isActive = false;
-	  
+
 	  	publish({
 	  		color: color,
 	  		plots: plots
@@ -120,4 +120,6 @@
 
 	  	plots = [];
 	}
+
+	
 })();
