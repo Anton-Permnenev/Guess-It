@@ -16,21 +16,26 @@ pubnub.subscribe({
 
 function insertIntoChat(message) {
     var dist = UUID + "^" + message.author + "^" + message.answer;
+    var crypto = CryptoJS.MD5(dist);
 
     if (message.type === 'attempt') {
-        var code = '<p id="' + CryptoJS.MD5(dist) + '"><b>' + message.author + ':</b> ' + message.answer + '</p>';
+        var code = '<p>';
 
         // host only
         if ($("#fence").data("param") === 'host') {
-            code += "<button onclick='confirmAttempt(\"" + dist + '\")' + "'>Correct</button>" +
-                    "<button onclick='rejectAttempt(\"" + dist + '\")' + "'>Error</button>";
+            code += "<div class=\"col-sm-4\" id=\""+ crypto + "_controls\">" +
+                    "<button onclick='confirmAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-up'></i></button>" +
+                    "<button onclick='rejectAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-down'></i></button>" +
+                    "</div>";
         }
+
+        code += '<div id="' + crypto + '" class="col-sm-8"><b>' + message.author + ':</b> ' + message.answer + '</div></p>';
 
         $("#chat").find("#fence").prepend(code);
     } else if (message.type === 'err') {
-        document.getElementById(CryptoJS.MD5(dist)).style.color = "red";
+        document.getElementById(crypto).style.color = "red";
     } else if (message.type === 'succ') {
-        document.getElementById(CryptoJS.MD5(dist)).style.color = "green";
+        document.getElementById(crypto).style.color = "green";
     }
 };
 
@@ -46,6 +51,7 @@ var confirmAttempt = function(dist) {
             type: 'succ'
         }
     });
+    $("#" + CryptoJS.MD5(dist) + "_controls").remove();
 }
 var rejectAttempt = function(dist) {
     var m = dist.split("^");
@@ -58,6 +64,7 @@ var rejectAttempt = function(dist) {
             type: 'err'
         }
     });
+    $("#" + CryptoJS.MD5(dist) + "_controls").remove();
 }
 
 // client-only
@@ -74,9 +81,11 @@ var publishAttempt = function() {
     document.getElementById('answer').value = "";
 }
 
-document.getElementById('submit').addEventListener('click', publishAttempt);
-$("#answer").keyup(function(event) {
-    if (event.keyCode === 13) {
-        publishAttempt();
-    }
-})
+if ($("#fence").data("param") === 'client') {
+    document.getElementById('submit').addEventListener('click', publishAttempt);
+    $("#answer").keyup(function (event) {
+        if (event.keyCode === 13) {
+            publishAttempt();
+        }
+    });
+}
