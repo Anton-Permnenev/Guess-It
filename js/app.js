@@ -35,8 +35,8 @@
 	var channel = 'draw';
 
 	var pubnub = PUBNUB.init({
-		publish_key     : 'pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695',
-		subscribe_key   : 'sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe',
+		publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
+		subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
 		leave_on_unload : true
 	});
 
@@ -102,6 +102,12 @@
     	plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
 
     	drawOnCanvas(color, plots);
+
+		 if (plots.length > 80) { // рисуем длинные кривые по частям
+		 	 endDraw(e);
+ 		 	 startDraw(e);
+			 plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
+		 }
 	}
 
 	function startDraw(e) {
