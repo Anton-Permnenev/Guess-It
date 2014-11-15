@@ -12,7 +12,7 @@ pubnub.subscribe({
 
 function insertIntoChat(message) {
     var code = '<p><b>' + message.author + ':</b> ' + message.answer + '</p>';
-    $("#chat").find("#fence").append(code);
+    $("#chat").find("#fence").prepend(code);
 };
 
 document.getElementById('submit').addEventListener('click', function() {
