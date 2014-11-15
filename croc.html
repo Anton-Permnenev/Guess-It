@@ -21,42 +21,80 @@
     </style>
 
 
-
-    <div>
-            <button id="present" name="Present">
-                Present
-            </button>
-    </div>
-
-    <div>
-         </div>
-            <h1>Number:</h1>
-            <input id="number"  placeholder="998 for example">
-          </div>
-            <button id="gess" name="Gess" >
-                Gess
-            </button>
-
-    </div>
-
-<script>(function(){
-    var PUBNUB_demo = PUBNUB.init({
-        publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
-        subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe'
-    });
-    PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('gess'), function() {
-        if (PUBNUB.$('number').value != null)
-            {
+    <script>(function () {
+        var PUBNUB_demo = PUBNUB.init({
+            publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
+            subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe'
+        });
+        PUBNUB.bind('mousedown,touchstart', PUBNUB.$('gess'), function () {
+            if (PUBNUB.$('number').value != null) {
                 location.replace("crocodilgess.html?" + PUBNUB.$('number').value);
             }
-    } );
-    PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('present'), function() {
-        location.replace("crocodilpresent.html");
-    } );
-})();</script>
+        });
+        PUBNUB.bind('mousedown,touchstart', PUBNUB.$('present'), function () {
+            location.replace("crocodilpresent.html");
+        });
+    })();
+
+    function joinclick() {
+        if (PUBNUB.$('number').value != null) {
+            location.replace("crocodilgess.html?" + PUBNUB.$('number').value);
+        }
+    }
+    </script>
 
 </head>
 <body>
+<header>
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Best navbar</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html" target="_blank">Home</a></li>
+                    <li><a href="http://www.google.com" target="_blank">Google</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-lg-2 col-centered">
+
+            <button type="button" class="btn btn-success" role="button" id="join" onclick="joinclick()">Join page
+            </button>
+        </div>
+
+        <div class="col-lg-2 col-centered">
+            <input id="number" placeholder="Enter host number">
+        </div>
+
+    </div>
+
+    <div class="row"><br></div>
+
+    <div class="row">
+
+
+        <div class="col-lg-2">
+            <div>
+                <a href="crocodilpresent.html" role="button" id="host" class="btn btn-success btn-large">Host game</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
 
 </body>
 </html>
