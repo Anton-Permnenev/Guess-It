@@ -37,9 +37,9 @@
 </nav>
 
 <div class="container">
-    <div class="form-horizontal" >
-        <div class="form-group" >
-            <div class="col-sm-9" >
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-9">
                 <div class="section padding-extra black" disabled>
                     <div id="IframeWrapper" style="position: relative;">
                         <div id="iframeBlocker"
@@ -52,13 +52,13 @@
                     <h1>Buttons</h1>
                 </div>
             </div>
-            <div class="col-sm-3" id="chat" >
+            <div class="col-sm-3" id="chat">
                 <div class="row">
                     <div class="col-sm-4">
                         Name:
                     </div>
                     <div class="col-sm-8">
-                        <input id="author" />
+                        <input id="author"/>
                     </div>
                 </div>
                 <div class="row">
@@ -66,14 +66,17 @@
                         Answer:
                     </div>
                     <div class="col-sm-8">
-                        <input id="answer" />
+                        <input id="answer"/>
                     </div>
 
                 </div>
-                <div class="row" >
+                <div class="row">
+                    <br>
                     <button id="submit">Send the answer!</button>
                 </div>
-                <div class="row" id="fence">
+                <div class="col-sm-12" style="height: 410px;overflow: scroll;overflow-x: hidden">
+                    <div class="row" id="fence">
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,6 +95,6 @@
 
 <script src="http://cdn.pubnub.com/pubnub.min.js"></script>
 <script src="js/app.min.js"></script>
-<script src="js/drawroll-chat.js" ></script>
+<script src="js/drawroll-chat.js"></script>
 </body>
 </html>
