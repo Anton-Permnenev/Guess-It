@@ -4,6 +4,11 @@ var pubnub = PUBNUB.init({
     publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
     subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe'
 });
+var UUID = PUBNUB.db.get('session') || (function(){
+    var uuid = PUBNUB.uuid();
+    PUBNUB.db.set( 'session',uuid );
+    return uuid;
+})();
 
 pubnub.subscribe({
     channel: chat_channel,
@@ -11,17 +16,38 @@ pubnub.subscribe({
 });
 
 function insertIntoChat(message) {
-    var code = '<p><b>' + message.author + ':</b> ' + message.answer + '</p>';
-    $("#chat").find("#fence").append(code);
+    var dist = UUID + message.author + message.answer;
+
+    if (message.type === 'attempt') {
+        var code = '<p id="' + CryptoJS.MD5(dist) + '"><b>' + message.author + ':</b> ' + message.answer + '</p>';
+        $("#chat").find("#fence").prepend(code);
+
+        // host only
+        var hostPanel = document.getElementById('hostPanel');
+
+    } else if (message.type === 'err') {
+        document.getElementById(dist).style.color = "magenta";
+    } else if (message.type === 'succ') {
+        document.getElementById(dist).style.color = "green";
+    }
 };
 
-document.getElementById('submit').addEventListener('click', function() {
+var publishAttempt = function() {
     pubnub.publish({
         channel: chat_channel,
         message: {
+            UUID: UUID,
             author: document.getElementById('author').value,
-            answer: document.getElementById('answer').value
+            answer: document.getElementById('answer').value,
+            type: 'attempt'
         }
     });
-});
+    document.getElementById('answer').value = "";
+}
 
+document.getElementById('submit').addEventListener('click', publishAttempt);
+$("#answer").keyup(function(event) {
+    if (event.keyCode === 13) {
+        publishAttempt();
+    }
+})
