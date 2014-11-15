@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="659fba8f-881c-4034-86b0-57cc386c8c01" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/css/bootstrap.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doodlerframe.html" afterPath="$PROJECT_DIR$/doodlerframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drawroll-client.html" afterPath="$PROJECT_DIR$/drawroll-client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drawroll-host.html" afterPath="$PROJECT_DIR$/drawroll-host.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/guessdoodle.html" afterPath="$PROJECT_DIR$/guessdoodle.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Hackathon-november-2014.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doodlerframe.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="doodlerframe.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/doodlerframe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="714">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.5474061" vertical-offset="153" max-vertical-offset="833">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,18 +59,18 @@
       <file leaf-file-name="drawroll-host.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drawroll-host.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6153846" vertical-offset="83" max-vertical-offset="1122">
+            <state vertical-scroll-proportion="3.1923077" vertical-offset="338" max-vertical-offset="1122">
               <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drawroll-client.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="drawroll-client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drawroll-client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33452594" vertical-offset="0" max-vertical-offset="1207">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1207">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -130,9 +122,9 @@
         <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/guessdoodle.html" />
-        <option value="$PROJECT_DIR$/doodlerframe.html" />
         <option value="$PROJECT_DIR$/drawroll-host.html" />
         <option value="$PROJECT_DIR$/drawroll-client.html" />
+        <option value="$PROJECT_DIR$/doodlerframe.html" />
       </list>
     </option>
   </component>
@@ -498,30 +490,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doodlerframe.html">
+    <entry file="file://$PROJECT_DIR$/drawroll-client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="714">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-          <folding />
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/drawroll-host.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6153846" vertical-offset="83" max-vertical-offset="1122">
+        <state vertical-scroll-proportion="3.1923077" vertical-offset="338" max-vertical-offset="1122">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drawroll-client.html">
+    <entry file="file://$PROJECT_DIR$/doodlerframe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33452594" vertical-offset="0" max-vertical-offset="1207">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5474061" vertical-offset="153" max-vertical-offset="833">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
