@@ -12,12 +12,7 @@
     <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
 
     <!-- Instantiate PubNub -->
-    <script type="text/javascript">
-        var PUBNUB_demo = PUBNUB.init({
-            publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
-            subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe'
-        });
-    </script>
+
 
     <style type="text/css">
         body {
@@ -26,15 +21,39 @@
     </style>
 
 
-    <button id="present" name="Present">
-        button
-    </button>
 
+    <div>
+            <button id="present" name="Present">
+                Present
+            </button>
+    </div>
 
-    <button id="gess" name="Gess">
+    <div>
+         </div>
+            <h1>Number:</h1>
+            <input id="number"  placeholder="998 for example">
+          </div>
+            <button id="gess" name="Gess" >
+                Gess
+            </button>
 
-    </button>
+    </div>
 
+<script>(function(){
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
+        subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe'
+    });
+    PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('gess'), function() {
+        if (PUBNUB.$('number').value != null)
+            {
+                location.replace("crocodilgess.html?" + PUBNUB.$('number').value);
+            }
+    } );
+    PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('present'), function() {
+        location.replace("crocodilpresent.html");
+    } );
+})();</script>
 
 </head>
 <body>

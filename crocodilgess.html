@@ -1,0 +1,49 @@
+<!-- dial.html -->
+
+<!-- Video Output Zone -->
+<div id="video-out" align="center"></div>
+        <div align="center">
+<input id="name"  placeholder="try gess the meaning">
+<button id="trygess" name="Gess" > Gess the word</button>
+        </div>
+<!-- Libs and Scripts -->
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="http://stephenlb.github.io/webrtc-sdk/js/webrtc.js"></script>
+<script>(function(){
+    // ~Warning~ You must get your own API Keys for non-demo purposes.
+    // ~Warning~ Get your PubNub API Keys: http://www.pubnub.com/get-started/
+    // The phone *number* can by any string value
+
+    var phone = PHONE({
+        number        : '1234',
+        publish_key   : 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
+        subscribe_key : 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
+        ssl           : true
+    });
+
+    // As soon as the phone is ready we can make calls
+    phone.ready(function(){
+
+        var session = phone.dial(location.search.substring(1,location.search.length));
+
+    });
+    //alert(location.search.substring(1,location.search.length));
+    // When Call Comes In or is to be Connected
+    phone.receive(function(session){
+
+        // Display Your Friend's Live Video
+        session.connected(function(session){
+            PUBNUB.$('video-out').appendChild(session.video);
+        });
+        session.thumbnail(function(session){
+
+            var img_self  = PUBNUB.$('video-self');
+            var body  = document.getElementsByTagName('body')[0];
+            var image = session.image;
+
+            body.appendChild(img_self);
+        });
+
+    });
+
+})();</script>
