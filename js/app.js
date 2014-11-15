@@ -103,11 +103,11 @@
 
     	drawOnCanvas(color, plots);
 
-		 if (plots.length > 80) { // рисуем длинные кривые по частям
+		if (plots.length > 20) { // рисуем длинные кривые по частям
 		 	 endDraw(e);
  		 	 startDraw(e);
 			 plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
-		 }
+		}
 	}
 
 	function startDraw(e) {
