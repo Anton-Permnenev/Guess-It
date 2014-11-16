@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="659fba8f-881c-4034-86b0-57cc386c8c01" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\ASUS\Documents\GitHub\Hackathon-november-2014\guessdoodle.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/css/bootstrap.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drawroll-client.html" afterPath="$PROJECT_DIR$/drawroll-client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drawroll-host.html" afterPath="$PROJECT_DIR$/drawroll-host.html" />
     </list>
     <ignored path="Hackathon-november-2014.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,12 +94,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drawroll-host.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="drawroll-host.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drawroll-host.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.884615" vertical-offset="326" max-vertical-offset="1292">
-              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-              <folding />
+            <state vertical-scroll-proportion="0.64954126" vertical-offset="479" max-vertical-offset="1309">
+              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drawroll-client.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="drawroll-client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drawroll-client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39605734" vertical-offset="1020" max-vertical-offset="1581">
-              <caret line="73" column="112" selection-start-line="73" selection-start-column="112" selection-end-line="73" selection-end-column="112" />
+            <state vertical-scroll-proportion="-15.692307" vertical-offset="901" max-vertical-offset="1649">
+              <caret line="77" column="42" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -160,7 +158,6 @@
         <option value="$PROJECT_DIR$/js/app.min.js" />
         <option value="$PROJECT_DIR$/guessdoodle.html" />
         <option value="$PROJECT_DIR$/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/drawroll-host.html" />
         <option value="$PROJECT_DIR$/js/drawroll-chat.js" />
         <option value="$PROJECT_DIR$/crocodileguess.html" />
         <option value="$PROJECT_DIR$/crocodile.html" />
@@ -176,6 +173,7 @@
         <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/drawroll-client.html" />
+        <option value="$PROJECT_DIR$/drawroll-host.html" />
       </list>
     </option>
   </component>
@@ -280,12 +278,7 @@
       <recent name="C:\Users\ASUS\Documents\GitHub\Hackathon-november-2014" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.drawroll-client.html">
-    <configuration default="false" name="crocodilgess.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hackathon-november-2014/crocodilgess.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JavaScript Debug.drawroll-host.html">
     <configuration default="false" name="croc-client.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hackathon-november-2014/croc-client.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
@@ -302,6 +295,11 @@
       <method />
     </configuration>
     <configuration default="false" name="drawroll-client.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hackathon-november-2014/drawroll-client.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="drawroll-host.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hackathon-november-2014/drawroll-host.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
@@ -344,19 +342,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.crocodilgess.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.croc-client.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.doodlerframe-client.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-client.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.croc-client.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.doodlerframe-client.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-client.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-host.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-client.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.doodlerframe-client.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.croc-client.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.crocodilgess.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-host.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.drawroll-client.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.doodlerframe-client.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.croc-client.html" />
       </list>
     </recent_temporary>
   </component>
@@ -684,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/drawroll-chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1003">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/croc-client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="561">
@@ -703,23 +693,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drawroll-host.html">
+    <entry file="file://$PROJECT_DIR$/js/drawroll-chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.884615" vertical-offset="326" max-vertical-offset="1292">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1003">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/drawroll-client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39605734" vertical-offset="1020" max-vertical-offset="1581">
-          <caret line="73" column="112" selection-start-line="73" selection-start-column="112" selection-end-line="73" selection-end-column="112" />
+        <state vertical-scroll-proportion="-15.692307" vertical-offset="901" max-vertical-offset="1649">
+          <caret line="77" column="42" selection-start-line="77" selection-start-column="42" selection-end-line="77" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drawroll-host.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64954126" vertical-offset="479" max-vertical-offset="1309">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
