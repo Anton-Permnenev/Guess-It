@@ -2,16 +2,12 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Hack</title>
+    <title></title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <!-- Include the PubNub Library -->
-    <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
-
-    <!-- Instantiate PubNub -->
 
     <style type="text/css">
         body {
@@ -40,6 +36,62 @@
     </nav>
 </header>
 
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-9">
+                <script>
+                    navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+                    navigator.getUserMedia({audio: false, video: true}, gotStream, streamError);
+
+                    function gotStream(stream) {
+                        document.querySelector('video').src = URL.createObjectURL(stream);
+                    }
+
+                    function streamError(error) {
+                        console.log(error);
+                    }
+                </script>
+                <div align="center">
+                    <video autoplay></video>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row"> Your number is:
+                    <span id="num"></span>
+                </div>
+                <div class="row"> Your word is:
+                    <span id="ww"></span>
+                </div>
+
+                <div class="row" id="fence" data-param="host">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="initModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Please confirm usage of camera and set your word</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <input id="word" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button id="tryguess" class="btn btn-default" type="button">Set Word</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="http://stephenlb.github.io/webrtc-sdk/js/webrtc.js"></script>
+<script src="js/croc-host.js"></script>
 
 </body>
 </html>
