@@ -43,7 +43,9 @@ var passphrase;
             show: true,
             backdrop: 'static',
             keyboard: false
-        })
+        });
+
+        invite();
     });
 
 
@@ -116,4 +118,13 @@ var rejectAttempt = function (dist) {
         }
     });
     $("#" + CryptoJS.MD5(dist) + "_controls").remove();
+}
+
+var invite = function() {
+    pubnub.publish({
+        channel: 'croc-lobby',
+        message: {
+            host: num
+        }
+    });
 }

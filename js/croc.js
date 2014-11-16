@@ -4,25 +4,12 @@ var pubnub = PUBNUB.init({
     leave_on_unload : true
 });
 
-var sum = 0;
-var list = [];
-for (var i = 1; i <= 1000; i++) {
-    pubnub.subscribe({
-        channel: 'croc-chat' + i,
-        presence: function(m){
-            if (m.occupancy > 0) {
-                list.push({host: i, viewers: m.occupancy});
-            };
-            alert("woo hoo" + i);
-        }
-    });
-}
-
-var str = "<table class='table table-striped'><thead><tr><td>Host ID</td><td>Viewers</td><td></td></tr></thead>";
-for (var i = 0; i < list.length; i++) {
-    var pair = list[i];
-    str += "<tr><td>" + pair.host + "</td><td>" + pair.viewers + "</td><td>" +
-    "<a href='croc-host.html?host=" + pair.host + "' class='btn btn-sample'>Join</a></td></tr>";
-}
-str += "</table>";
-$("#channels").innerHTML = str;
+pubnub.subscribe({
+    channel: 'croc-lobby',
+    callback: function(m) {
+        var host = m.host;
+        var code = '<p><b>Player on host ' + host.toString() + ' is ready to play. </b>' +
+            '<a href="croc-client.html?host=' + host.toString() + ' role="button" class="btn btn-sample">Join</a></p>';
+        $("#channels").append(code);
+    }
+})
