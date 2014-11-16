@@ -7,6 +7,7 @@ var passphrase;
         number: num,
         publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
         subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
+        media: {audio:false, video:true},
         ssl: false
     });
     document.getElementById('num').innerHTML = num;
@@ -88,6 +89,7 @@ function responseToChat(message) {
         document.getElementById(crypto).style.color = "red";
     } else if (message.type === 'succ') {
         document.getElementById(crypto).style.color = "green";
+
     }
 }
 
