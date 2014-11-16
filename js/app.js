@@ -19,21 +19,6 @@
     }, false);
 
 
-    function clearCanvas() {
-        canvas = document.getElementById('drawCanvas'); //because we are looping //each location has its own canvas ID
-        context = canvas.getContext('2d');
-        //context.beginPath();
-
-        // Store the current transformation matrix
-        context.save();
-
-        // Use the identity matrix while clearing the canvas
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Restore the transform
-        context.restore(); //CLEARS THE SPECIFIC CANVAS COMPLETELY FOR NEW DRAWING
-    }
 
     var isTouchSupported = 'ontouchstart' in window;
     var isPointerSupported = navigator.pointerEnabled;
@@ -146,7 +131,7 @@
         plots = [];
     }
     document.getElementById('refresh').addEventListener('click', function () {
-        clearCanvas();
+
         pubnub.publish({
             channel: 'drawroll-chat',
             message: {

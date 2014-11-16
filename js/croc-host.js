@@ -12,6 +12,8 @@ var passphrase;
     document.getElementById('num').innerHTML = num;
 
 
+
+
     // As soon as the phone is ready we can make calls
     phone.ready(function () {
 
@@ -38,8 +40,10 @@ var passphrase;
             }
         });
         $("#initModal").modal({
-            show: true
-        });
+            show: true,
+            backdrop: 'static',
+            keyboard: false
+        })
     });
 
 
