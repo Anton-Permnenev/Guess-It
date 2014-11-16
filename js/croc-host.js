@@ -11,26 +11,34 @@ var passphrase;
     });
     document.getElementById('num').innerHTML = num;
 
-    $("#initModal").modal({
-        show: true
-    });
 
     // As soon as the phone is ready we can make calls
     phone.ready(function () {
 
         PUBNUB.bind('mousedown,touchstart', PUBNUB.$('tryguess'), function () {
-            passphrase = PUBNUB.$('word').value;
-            document.getElementById('ww').innerHTML = passphrase;
-            document.getElementById('word').value = "";
-            $("#initModal").modal('hide');
-        });
-        $("#word").keyup(function(event) {
-            if (event.keyCode === 13) {
-                passphrase = document.getElementById('word').value;
+            passphrase = document.getElementById('word').value;
+            if (passphrase === '') {
+                alert('You must set your word!');
+
+            }else{
                 document.getElementById('ww').innerHTML = passphrase;
                 document.getElementById('word').value = "";
-                $("#initModal").modal('hide');
+                $("#initModal").modal('hide');}
+        });
+        $("#word").keyup(function (event) {
+            if (event.keyCode === 13) {
+                passphrase = document.getElementById('word').value;
+                if (passphrase === '') {
+                    alert('You must set your word!');
+
+                }else{
+                document.getElementById('ww').innerHTML = passphrase;
+                document.getElementById('word').value = "";
+                $("#initModal").modal('hide');}
             }
+        });
+        $("#initModal").modal({
+            show: true
         });
     });
 
@@ -63,11 +71,11 @@ function responseToChat(message) {
 
     if (message.type === 'attempt') {
         var code = '<p>' +
-                    "<div class=\"col-sm-4\" id=\""+ crypto + "_controls\">" +
-                    "<button onclick='confirmAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-up'></i></button>" +
-                    "<button onclick='rejectAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-down'></i></button>" +
-                    "</div>";
-        code +=     '<div id="' + crypto + '" class="col-sm-8"><b>' + message.author + ':</b> ' + message.answer + '</div></p>';
+            "<div class=\"col-sm-4\" id=\"" + crypto + "_controls\">" +
+            "<button onclick='confirmAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-up'></i></button>" +
+            "<button onclick='rejectAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-down'></i></button>" +
+            "</div>";
+        code += '<div id="' + crypto + '" class="col-sm-8"><b>' + message.author + ':</b> ' + message.answer + '</div></p>';
 
         jQuery("#fence").prepend(code);
     } else if (message.type === 'err') {
@@ -78,7 +86,7 @@ function responseToChat(message) {
 }
 
 // server-only
-var confirmAttempt = function(dist) {
+var confirmAttempt = function (dist) {
     var m = dist.split("^");
     pubnub.publish({
         channel: chat_channel,
@@ -91,7 +99,7 @@ var confirmAttempt = function(dist) {
     });
     $("#" + CryptoJS.MD5(dist) + "_controls").remove();
 }
-var rejectAttempt = function(dist) {
+var rejectAttempt = function (dist) {
     var m = dist.split("^");
     pubnub.publish({
         channel: chat_channel,
