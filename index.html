@@ -18,6 +18,14 @@
         }
     </style>
     <script>
+        function changeimage(url){
+            image=document.getElementById("image")
+            image.src=url;
+            image.style.visibility='visible';
+        }
+        function hideimage(){
+            document.getElementById(image).style.visibility='hidden';
+        }
         $(function () {
             $("#includedContent").load("templates/mainTemplate.html");
         });
@@ -31,13 +39,16 @@
     <div class="col-md-4">
         <div class="list-group">
 
-            <a href="croc.html" class="list-group-item">
+            <a href="croc.html" class="list-group-item" onmouseover="changeimage('images/croc.bmp')" onmouseout="hideimage()">
                 Crocodile
             </a>
-            <a href="#" class="list-group-item" data-toggle="modal" data-target="#doodlemodal">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#doodlemodal" onmouseover="changeimage('images/doodler.bmp')" onmouseout="hideimage()">
                 Guess the doodle
             </a>
         </div>
+    </div>
+    <div class="col-md-8">
+        <img src="" id="image" class="img-rounded" style="height: 500px;width: auto;visibility: hidden">
     </div>
 </div>
 
