@@ -8,7 +8,6 @@ var UUID = PUBNUB.db.get('session') || (function(){
     PUBNUB.db.set( 'session',uuid );
     return uuid;
 })();
-
 pubnub.subscribe({
     channel: chat_channel,
     callback: insertIntoChat
