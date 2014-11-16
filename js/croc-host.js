@@ -89,7 +89,7 @@ function responseToChat(message) {
         document.getElementById(crypto).style.color = "red";
     } else if (message.type === 'succ') {
         document.getElementById(crypto).style.color = "green";
-
+        $("#hostModal").modal('show');
     }
 }
 
