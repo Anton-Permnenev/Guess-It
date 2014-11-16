@@ -42,7 +42,6 @@ function insertIntoChat(message) {
         }
     } else if (message.type === 'refresh') {
         clearCanvas();
-        alarm("bad");
     }
 };
 function clearCanvas() {
