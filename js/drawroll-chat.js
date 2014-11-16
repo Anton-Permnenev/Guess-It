@@ -99,14 +99,16 @@ var publishAttempt = function () {
 
 }
 
-document.getElementById('refresh').addEventListener('click', clearCanvas, false);
 
 
 if ($("#fence").data("param") === 'client') {
     document.getElementById('submit').addEventListener('click', publishAttempt);
     $("#answer").keyup(function (event) {
+
         if (event.keyCode === 13) {
             publishAttempt();
         }
     });
+}else{
+    document.getElementById('refresh').addEventListener('click', clearCanvas, false);
 }
