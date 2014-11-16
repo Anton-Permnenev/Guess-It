@@ -16,25 +16,15 @@
             padding-top: 70px;
         }
     </style>
+    <script>
+        $(function(){
+            $("#includedContent").load("templates/mainTemplate.html");
+        });
+    </script>
 </head>
 <body>
-<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Best navbar</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html" target="_blank">Home</a></li>
-                <li><a href="http://www.google.com" target="_blank">Google</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="includedContent"></div>
+
 
 <div class="container">
     <div class="form-horizontal">
@@ -45,7 +35,7 @@
                         <div id="iframeBlocker"
                              style="position: absolute; top: 0; left: 0; width: 100%; height: 500px"></div>
                         <iframe src="doodlerframe-client.html" width="100%" height="500px" scrolling="no" seamless="seamless"
-                                frameborder="0"></iframe>
+                                frameborder="0" style="border:1px solid #000000;"></iframe>
                     </div>
                 </div>
             </div>
@@ -74,7 +64,7 @@
                     <br>
                 </div>
                 <br>
-                <div class="col-sm-12" style="height: 355px;overflow: scroll;overflow-x: hidden;overflow-y: auto;background-color: #7b7d7a">
+                <div class="col-sm-12" style="height: 355px;overflow: scroll;overflow-x: hidden;overflow-y: auto;background-color: #cccfca">
                     <div class="row">Chat:</div>
                     <div class="row" id="fence" data-param="client">
                     </div>
