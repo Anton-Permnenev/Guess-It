@@ -98,6 +98,7 @@ var confirmAttempt = function (dist) {
         }
     });
     $("#" + CryptoJS.MD5(dist) + "_controls").remove();
+    $("hostModal").modal('show');
 }
 var rejectAttempt = function (dist) {
     var m = dist.split("^");

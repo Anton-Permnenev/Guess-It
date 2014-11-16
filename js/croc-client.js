@@ -34,6 +34,11 @@ function insertIntoChat(message) {
         document.getElementById(crypto).style.color = "red";
     } else if (message.type === 'succ') {
         document.getElementById(crypto).style.color = "green";
+        if (message.UUID === UUID) {
+            $("#winModal").modal('show');
+        } else {
+            $("#loseModal").modal('show');
+        }
     }
 };
 
