@@ -1,131 +1,161 @@
-(function() {
-	/* Canvas */
+(function () {
+    /* Canvas */
 
-	var canvas = document.getElementById('drawCanvas');
-	var ctx = canvas.getContext('2d');
-	var color = document.querySelector(':checked').getAttribute('data-color');
+    var canvas = document.getElementById('drawCanvas');
+    var ctx = canvas.getContext('2d');
+    var color = document.querySelector(':checked').getAttribute('data-color');
 
-	canvas.width = Math.min(document.documentElement.clientWidth, window.innerWidth || 300);
-	canvas.height = Math.min(document.documentElement.clientHeight, window.innerHeight || 300);
+    canvas.width = Math.min(document.documentElement.clientWidth, window.innerWidth || 300);
+    canvas.height = Math.min(document.documentElement.clientHeight, window.innerHeight || 300);
 
-	ctx.strokeStyle = color;
-	ctx.lineWidth = '3';
-	ctx.lineCap = ctx.lineJoin = 'round';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = '3';
+    ctx.lineCap = ctx.lineJoin = 'round';
 
-	/* Mouse and touch events */
+    /* Mouse and touch events */
 
-	document.getElementById('colorSwatch').addEventListener('click', function() {
-		color = document.querySelector(':checked').getAttribute('data-color');
-	}, false);
+    document.getElementById('colorSwatch').addEventListener('click', function () {
+        color = document.querySelector(':checked').getAttribute('data-color');
+    }, false);
 
-	var isTouchSupported = 'ontouchstart' in window;
-	var isPointerSupported = navigator.pointerEnabled;
-	var isMSPointerSupported =  navigator.msPointerEnabled;
 
-	var downEvent = isTouchSupported ? 'touchstart' : (isPointerSupported ? 'pointerdown' : (isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
-	var moveEvent = isTouchSupported ? 'touchmove' : (isPointerSupported ? 'pointermove' : (isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
-	var upEvent = isTouchSupported ? 'touchend' : (isPointerSupported ? 'pointerup' : (isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
+    function clearCanvas() {
+        canvas = document.getElementById('drawCanvas'); //because we are looping //each location has its own canvas ID
+        context = canvas.getContext('2d');
+        //context.beginPath();
 
-	canvas.addEventListener(downEvent, startDraw, false);
-	canvas.addEventListener(moveEvent, draw, false);
-	canvas.addEventListener(upEvent, endDraw, false);
+        // Store the current transformation matrix
+        context.save();
 
-	/* PubNub */
+        // Use the identity matrix while clearing the canvas
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-	var channel = 'draw';
+        // Restore the transform
+        context.restore(); //CLEARS THE SPECIFIC CANVAS COMPLETELY FOR NEW DRAWING
+    }
 
-	var pubnub = PUBNUB.init({
-		publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
-		subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
-		leave_on_unload : true
-	});
+    var isTouchSupported = 'ontouchstart' in window;
+    var isPointerSupported = navigator.pointerEnabled;
+    var isMSPointerSupported = navigator.msPointerEnabled;
 
-	pubnub.subscribe({
-		channel: channel,
-		callback: drawFromStream,
-		presence: function(m){
-			if(m.occupancy > 1){
-				document.getElementById('unit').textContent = 'doodlers';
-			}
-   			document.getElementById('occupancy').textContent = m.occupancy;
-   			var p = document.getElementById('occupancy').parentNode;
-   			p.classList.add('anim');
-   			p.addEventListener('transitionend', function(){p.classList.remove('anim');}, false);
-   		}
-	});
+    var downEvent = isTouchSupported ? 'touchstart' : (isPointerSupported ? 'pointerdown' : (isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
+    var moveEvent = isTouchSupported ? 'touchmove' : (isPointerSupported ? 'pointermove' : (isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
+    var upEvent = isTouchSupported ? 'touchend' : (isPointerSupported ? 'pointerup' : (isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
 
-	function publish(data) {
-		pubnub.publish({
-			channel: channel,
-			message: data
-		});
-     }
+    canvas.addEventListener(downEvent, startDraw, false);
+    canvas.addEventListener(moveEvent, draw, false);
+    canvas.addEventListener(upEvent, endDraw, false);
+
+    /* PubNub */
+
+    var channel = 'draw';
+
+    var pubnub = PUBNUB.init({
+        publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
+        subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
+        leave_on_unload: true
+    });
+
+    pubnub.subscribe({
+        channel: channel,
+        callback: drawFromStream,
+        presence: function (m) {
+            if (m.occupancy > 1) {
+                document.getElementById('unit').textContent = 'doodlers';
+            }
+            document.getElementById('occupancy').textContent = m.occupancy;
+            var p = document.getElementById('occupancy').parentNode;
+            p.classList.add('anim');
+            p.addEventListener('transitionend', function () {
+                p.classList.remove('anim');
+            }, false);
+        }
+    });
+
+    function publish(data) {
+        pubnub.publish({
+            channel: channel,
+            message: data
+        });
+    }
 
     /* Draw on canvas */
 
     function drawOnCanvas(color, plots) {
-    	ctx.strokeStyle = color;
-		ctx.beginPath();
-		ctx.moveTo(plots[0].x, plots[0].y);
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(plots[0].x, plots[0].y);
 
-    	for(var i=1; i<plots.length; i++) {
-	    	ctx.lineTo(plots[i].x, plots[i].y);
-	    }
-	    ctx.stroke();
+        for (var i = 1; i < plots.length; i++) {
+            ctx.lineTo(plots[i].x, plots[i].y);
+        }
+        ctx.stroke();
     }
 
     function drawFromStream(message) {
-		if(!message || message.plots.length < 1) return;
-		drawOnCanvas(message.color, message.plots);
+        if (!message || message.plots.length < 1) return;
+        drawOnCanvas(message.color, message.plots);
     }
 
     // Get Older and Past Drawings!
-    if(drawHistory) {
-	    pubnub.history({
-	    	channel  : channel,
-	    	count    : 50,
-	    	callback : function(messages) {
-	    		pubnub.each( messages[0], drawFromStream );
-	    	}
-	    });
-	}
+    if (drawHistory) {
+        pubnub.history({
+            channel: channel,
+            count: 50,
+            callback: function (messages) {
+                pubnub.each(messages[0], drawFromStream);
+            }
+        });
+    }
     var isActive = false;
     var plots = [];
 
-	function draw(e) {
-		e.preventDefault(); // prevent continuous touch event process e.g. scrolling!
-	  	if(!isActive) return;
+    function draw(e) {
+        e.preventDefault(); // prevent continuous touch event process e.g. scrolling!
+        if (!isActive) return;
 
-    	var x = isTouchSupported ? (e.targetTouches[0].pageX - canvas.offsetLeft) : (e.offsetX || e.layerX - canvas.offsetLeft);
-    	var y = isTouchSupported ? (e.targetTouches[0].pageY - canvas.offsetTop) : (e.offsetY || e.layerY - canvas.offsetTop);
+        var x = isTouchSupported ? (e.targetTouches[0].pageX - canvas.offsetLeft) : (e.offsetX || e.layerX - canvas.offsetLeft);
+        var y = isTouchSupported ? (e.targetTouches[0].pageY - canvas.offsetTop) : (e.offsetY || e.layerY - canvas.offsetTop);
 
-    	plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
+        plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
 
-    	drawOnCanvas(color, plots);
+        drawOnCanvas(color, plots);
 
-		if (plots.length > 20) { // рисуем длинные кривые по частям
-		 	 endDraw(e);
- 		 	 startDraw(e);
-			 plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
-		}
-	}
+        if (plots.length > 20) { // рисуем длинные кривые по частям
+            endDraw(e);
+            startDraw(e);
+            plots.push({x: (x << 0), y: (y << 0)}); // round numbers for touch screens
+        }
+    }
 
-	function startDraw(e) {
-	  	e.preventDefault();
-	  	isActive = true;
-	}
+    function startDraw(e) {
+        e.preventDefault();
+        isActive = true;
+    }
 
-	function endDraw(e) {
-	  	e.preventDefault();
-	  	isActive = false;
+    function endDraw(e) {
+        e.preventDefault();
+        isActive = false;
 
-	  	publish({
-	  		color: color,
-	  		plots: plots
-	  	});
+        publish({
+            color: color,
+            plots: plots
+        });
 
-	  	plots = [];
-	}
+        plots = [];
+    }
+    document.getElementById('refresh').addEventListener('click', function () {
+        clearCanvas();
+        pubnub.publish({
+            channel: 'drawroll-chat',
+            message: {
+                type: 'refresh'
+            }
+        });
+
+    }, false);
 
 
 })();
+

@@ -140,6 +140,14 @@ header div {
         display: inline-block;
         margin-right: 10px;
     }
+    #refresh{
+        font-size: 2.5em;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        top: 360px;
+        left: 20px;
+    }
     #colorSwatch {
         display: inline-block;
         width: 50px;
