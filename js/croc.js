@@ -9,7 +9,7 @@ pubnub.subscribe({
     callback: function(m) {
         var host = m.host;
         var code = '<p><b>Player on host ' + host.toString() + ' is ready to play. </b>' +
-            '<a href="croc-client.html?host=' + host.toString() + ' role="button" class="btn btn-sample">Join</a></p>';
+            '<a href="croc-client.html?host=' + host.toString() + '" role="button" class="btn btn-sample">Join</a></p>';
         $("#channels").append(code);
     }
 })
