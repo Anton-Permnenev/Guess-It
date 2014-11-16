@@ -17,7 +17,7 @@
         }
     </style>
     <script>
-        $(function(){
+        $(function () {
             $("#includedContent").load("templates/mainTemplate.html");
             $("#modals").load("templates/croc-modals.html");
         });
@@ -42,6 +42,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <label for="answer" class="col-sm-4 control-label">
                         Answer:
@@ -56,8 +57,12 @@
                     <br>
                 </div>
                 <br>
-                <div class="col-sm-12" style="height: 355px;overflow: scroll;overflow-x: hidden;overflow-y: auto;background-color: #cccfca">
-                    <div class="row">Chat:</div>
+
+                <div class="col-sm-12"
+                     style="height: 355px;overflow: scroll;overflow-x: hidden;overflow-y: auto;background-color: #cccfca">
+                    <div class="row" style="background-color: #7b7b7a; height: 30px">
+                        <span class="glyphicon glyphicon-comment" style="margin-top: 7px;margin-left: 10px"></span> Chat
+                    </div>
                     <div class="row" id="fence" data-param="client">
                     </div>
                 </div>
@@ -71,6 +76,6 @@
 </div>
 
 <script src="http://stephenlb.github.io/webrtc-sdk/js/webrtc.js"></script>
-<script src="js/croc-client.js" ></script>
+<script src="js/croc-client.js"></script>
 </body>
 </html>

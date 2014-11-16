@@ -18,7 +18,7 @@ function insertIntoChat(message) {
     var crypto = CryptoJS.MD5(dist);
 
     if (message.type === 'attempt') {
-        var code = '<div class="row" style="margin-bottom: 5px">';
+        var code = '<div class="row" style="margin-bottom: 3px;margin-top: 3px">';
 
         // host only
         if ($("#fence").data("param") === 'host') {
@@ -74,16 +74,24 @@ var rejectAttempt = function(dist) {
 
 // client-only
 var publishAttempt = function() {
-    pubnub.publish({
-        channel: chat_channel,
-        message: {
-            UUID: UUID,
-            author: document.getElementById('author').value,
-            answer: document.getElementById('answer').value,
-            type: 'attempt'
-        }
-    });
-    document.getElementById('answer').value = "";
+    if (document.getElementById('author').value==='') {
+        alert("Set your name!");
+    }
+    else if (document.getElementById('answer').value==='') {
+        alert("Set your answer!");
+    } else {
+        pubnub.publish({
+            channel: chat_channel,
+            message: {
+                UUID: UUID,
+                author: document.getElementById('author').value,
+                answer: document.getElementById('answer').value,
+                type: 'attempt'
+            }
+        });
+        document.getElementById('answer').value = "";
+    }
+
 }
 
 if ($("#fence").data("param") === 'client') {
