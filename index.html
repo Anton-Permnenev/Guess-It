@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Hack</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
@@ -12,6 +12,7 @@
     <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
 
     <!-- Instantiate PubNub -->
+
 
     <style type="text/css">
         body {
@@ -39,37 +40,39 @@
         </div>
     </nav>
 </header>
-<div class="list-group">
-    <a href="croc.html" class="list-group">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Crocodile</h1>
+<div class="col-md-4">
+    <div class="list-group">
+
+        <a href="croc.html" class="list-group-item">
+            Crocodile
+        </a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#doodlemodal">
+            Guess the doodle
+        </a>
+        <a href="#" class="list-group-item">
+            Draw together
+        </a>
+    </div>
+</div>
+
+<div class="modal fade" id="doodlemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Game mode</h4>
             </div>
-            <div class="col-md-4">
-                <h1>Img</h1>
+            <div class="modal-body">
+                <div class="container">
+                    <a href="drawroll-host.html" role="button" class="btn btn-sample">Host game</a>
+                    <a href="drawroll-client.html" role="button" class="btn btn-sample">Join game</a>
+                </div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
-    </a>
-    <a href="guessdoodle.html" class="list-group" >
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Guess the doodle</h1>
-            </div>
-            <div class="col-md-4">
-                <h1>Img</h1>
-            </div>
-        </div>
-    </a>
-    <a href="#" class="list-group">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Draw together</h1>
-            </div>
-            <div class="col-md-4">
-                <h1>Img</h1>
-            </div>
-        </div>
-    </a>
+    </div>
 </div>
 
 
