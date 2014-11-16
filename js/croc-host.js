@@ -1,13 +1,13 @@
-var num = '-1'; // пригодится
+var rand = (1 + Math.random() * (1000)) ^ 0;
+var num = rand.toString();
+var passphrase;
+
 (function () {
-    var rand = (1 + Math.random() * (1000)) ^ 0;
-    num = rand.toString();
-    var passphrase;
     var phone = PHONE({
         number: num,
         publish_key: 'pub-c-ccca9b35-6dce-48e8-8b92-a19ba6376d04',
         subscribe_key: 'sub-c-673b9e80-6787-11e4-814d-02ee2ddab7fe',
-        ssl: true
+        ssl: false
     });
     document.getElementById('num').innerHTML = num;
 
@@ -47,6 +47,15 @@ pubnub.subscribe({
     channel: chat_channel,
     callback: responseToChat
 });
+pubnub.publish({
+    channel: chat_channel,
+    message: {
+        UUID: "1",
+        author: "Vasya",
+        answer: "Sun",
+        type: "attempt"
+    }
+})
 
 function responseToChat(message) {
     var dist = message.UUID + "^" + message.author + "^" + message.answer;
@@ -60,13 +69,13 @@ function responseToChat(message) {
                     "</div>";
         code +=     '<div id="' + crypto + '" class="col-sm-8"><b>' + message.author + ':</b> ' + message.answer + '</div></p>';
 
-        $("#chat").find("#fence").prepend(code);
+        jQuery("#fence").prepend(code);
     } else if (message.type === 'err') {
         document.getElementById(crypto).style.color = "red";
     } else if (message.type === 'succ') {
         document.getElementById(crypto).style.color = "green";
     }
-};
+}
 
 // server-only
 var confirmAttempt = function(dist) {
