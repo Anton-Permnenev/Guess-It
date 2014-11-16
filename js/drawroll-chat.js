@@ -19,17 +19,17 @@ function insertIntoChat(message) {
     var crypto = CryptoJS.MD5(dist);
 
     if (message.type === 'attempt') {
-        var code = '<p>';
+        var code = '<div class="row" style="margin-bottom: 5px">';
 
         // host only
         if ($("#fence").data("param") === 'host') {
-            code += "<div class=\"col-sm-4\" id=\""+ crypto + "_controls\">" +
+            code += "<div class=\"col-lg-4\" id=\""+ crypto + "_controls\">" +
                     "<button onclick='confirmAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-up'></i></button>" +
                     "<button onclick='rejectAttempt(\"" + dist + '\")' + "'><i class='glyphicon glyphicon-thumbs-down'></i></button>" +
                     "</div>";
         }
 
-        code += '<div id="' + crypto + '" class="col-sm-8"><b>' + message.author + ':</b> ' + message.answer + '</div></p>';
+        code += '<div id="' + crypto + '" class="col-lg-8"><b>' + message.author + ':</b> ' + message.answer + '</div>'+'</div>';
 
         $("#chat").find("#fence").prepend(code);
     } else if (message.type === 'err') {
